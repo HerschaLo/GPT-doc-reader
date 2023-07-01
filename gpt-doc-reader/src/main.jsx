@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import "./index.css";
+import "./styles/index.css";
 import Index from "./pages";
 import Auth from "./pages/auth";
 
