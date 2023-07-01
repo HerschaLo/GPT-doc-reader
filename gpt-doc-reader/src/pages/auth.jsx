@@ -1,6 +1,10 @@
+import '../styles/auth.css'
+
 const Auth = () => {
     return (
-        <div>auth page</div>
+        <div className='cont'>
+            <div className='formBody'>lorem ipsum</div>
+            </div>
     )
 }
 
