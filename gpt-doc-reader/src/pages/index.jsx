@@ -4,7 +4,7 @@ import magnifyText from "../assets/magnifyText.PNG"
 const Index = () => {
 
 return (
-    <div className="bg-slate-900 w-screen grid justify-items-center">
+    <>
         <h1 className="text-7xl">GPT doc reader</h1>
         <img src={clipartRobo} />
         <div className="w-2/3 mb-24">
@@ -19,7 +19,7 @@ return (
                 getting a convenient overview of a lengthy article you&apos;re reading for a research project.
             </p>
         </div>
-    </div>
+    </>
 )
 }
 

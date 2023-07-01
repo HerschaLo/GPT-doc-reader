@@ -3,22 +3,21 @@ import * as ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
+  createRoutesFromElements,
+  Route
 } from "react-router-dom";
 import "./main.scss";
 import Index from "./pages";
 import Auth from "./pages/auth";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Index/>,
-  },
-    {
-      path: "/auth",
-    element: <Auth/>,
-    }
-
-]);
+import Layout from "./components/layout";
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+        <Route index element={<Index />}/>
+        <Route path="/auth" element={<Auth />}/>
+    </Route>
+  )
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
