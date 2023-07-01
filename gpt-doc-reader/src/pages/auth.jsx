@@ -1,4 +1,4 @@
-import '../styles/auth.css'
+import '../styles/auth.scss'
 
 const Auth = () => {
     return (

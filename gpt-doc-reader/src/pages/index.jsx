@@ -1,13 +1,22 @@
-import '../styles/index.css'
-
+import '../styles/index.scss'
+import clipartRobo from "../assets/clipartRobo.PNG"
+import magnifyText from "../assets/magnifyText.PNG"
 const Index = () => {
 
 return (
-    <div className="bg-slate-900 w-screen h-screen grid justify-items-center">
-        <h1 className="text-5xl">GPT doc reader</h1>
-        <div className="w-2/3">
-            <p>We leverage the power of OpenAI&apos;s GPT-4 for processing your documents like resumes and textbooks to give you personalized AI-powered assisstance 
-                based on the information in them. From giving a quick summary of the key points for a university textbook chapter to automating cover letter writing for a job based on your resume, we&apos;ll cover all your document needs!
+    <div className="bg-slate-900 w-screen grid justify-items-center">
+        <h1 className="text-7xl">GPT doc reader</h1>
+        <img src={clipartRobo} />
+        <div className="w-2/3 mb-24">
+            <p className="text-xl">We leverage the power of OpenAI&apos;s GPT-4 for processing your documents like resumes and textbooks to give you personalized AI-powered assisstance 
+                based on the information in them. Here&apos;s a list of our features:
+            </p>
+        </div>
+        <div className="grid w-2/3">
+            <h2 className="text-5xl">Quick Insight</h2>
+            <img src={magnifyText} className="justify-self-center"/>
+            <p className="justify-self-center">Generate a quick summary of the key information in a document. Perfect for skimming through the main points of a chapter in your textbook, or 
+                getting a convenient overview of a lengthy article you&apos;re reading for a research project.
             </p>
         </div>
     </div>
