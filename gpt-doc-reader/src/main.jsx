@@ -5,12 +5,19 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
+import Index from "./pages";
+import Auth from "./pages/auth";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1 className="text-3xl font-bold underline">Hello world!</h1>,
+    element: <Index/>,
   },
+    {
+      path: "/auth",
+    element: <Auth/>,
+    }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
