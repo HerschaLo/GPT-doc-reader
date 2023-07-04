@@ -21,5 +21,3 @@ embeddings = OpenAIEmbeddings(model_name='ada')
 query_result = embeddings.embed_query(res[0].page_content)
 
 
-
-
