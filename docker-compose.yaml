@@ -1,0 +1,20 @@
+services:
+  postgres:
+    build:
+      context: ./backend
+      dockerfile: postgres.dockerfile
+    image: "gpt_doc_reader_postgres_image"
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: ${PG_DATA}
+    volumes:
+       - gpt-doc-reader-postgres:/data/gpt-doc-reader-postgres
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+volumes:
+    gpt-doc-reader-postgres:
+      external: true
