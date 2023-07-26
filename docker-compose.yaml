@@ -10,6 +10,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PGDATA: ${PG_DATA}
+      PGOPTIONS: ${PG_OPTIONS}
     volumes:
        - gpt-doc-reader-postgres:/data/gpt-doc-reader-postgres
     ports:
