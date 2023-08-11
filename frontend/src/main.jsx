@@ -8,29 +8,24 @@ import {
 } from "react-router-dom";
 import "./main.scss";
 import Index from "./pages";
-import Auth from "./pages/auth";
 import Layout from "./components/layout";
-import { Auth0Provider } from '@auth0/auth0-react';
-
+import Auth0ProviderWithNavigate from "./components/auth0-provider-with-navigate";
+import Profile from "./pages/profile";
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
+    <Route path="/" element={
+      <Auth0ProviderWithNavigate>
+        <Layout />
+      </Auth0ProviderWithNavigate>
+    }>
         <Route index element={<Index />}/>
-        <Route path="/auth" element={<Auth />}/>
+        <Route  element={<Profile />} path="/profile"/>
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Auth0Provider
-      domain="dev-4et1s8fqfxunww8q.us.auth0.com"
-      clientId="5Iu6Wr7yLpiQClPpRIzdyoULsIcQH5UY"
-      authorizationParams={{
-        redirect_uri: window.location.origin
-      }}
-    >
       <RouterProvider router={router} />
-    </Auth0Provider>
   </React.StrictMode>
 );
