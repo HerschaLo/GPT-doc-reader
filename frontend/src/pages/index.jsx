@@ -2,7 +2,34 @@ import '../styles/index.scss'
 import clipartRobo from "../assets/clipartRobo.PNG"
 import magnifyText from "../assets/magnifyText.PNG"
 import { Link } from "react-router-dom"
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 const Index = () => {
+    const {loginWithRedirect, isAuthenticated, isLoading} = useAuth0()
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if(isAuthenticated){
+            navigate("/profile")
+        }
+    },[isAuthenticated, isLoading, navigate])
+
+    const handleSignUp = async () => {
+        await loginWithRedirect({
+          appState: {
+            returnTo: "/",
+            action:"signup"
+          },
+          authorizationParams: {
+            screen_hint: "signup",
+          },
+        });
+    };
+
+    if(isLoading){
+        return <></>
+    }
 
     return (
         <>
@@ -13,7 +40,7 @@ const Index = () => {
                     based on the information in them.
                 </p>
             </div>
-            <Link to="/auth" className="bg-slate-700 px-6 py-4 mb-16 flex items-center justify-center text-4xl rounded-lg transition duration-300 hover:bg-slate-200 hover:text-black">Try it now!</Link>
+            <Link onClick={handleSignUp} className="bg-slate-700 px-6 py-4 mb-16 flex items-center justify-center text-4xl rounded-lg transition duration-300 hover:bg-slate-200 hover:text-black">Try it now!</Link>
             <div className="grid w-2/3">
                 <h2 className="text-5xl">Quick Insight</h2>
                 <img src={magnifyText} className="justify-self-center" />

@@ -10,14 +10,14 @@ const Layout = () => {
         const authCheck = async () =>{
             console.log("hi")
             if(!isLoading){
+                console.log("hello")
                 if(isAuthenticated){
+                    console.log("hello2")
                     const accessToken = await getAccessTokenSilently()
                     
                     await fetch("http://127.0.0.1:5000/login",{
                         method:"POST",
-                        body:"",
                         headers:{
-                            "Content-Type":"text/plain",
                             "Authorization":`Bearer ${accessToken}`
                         }
                     })

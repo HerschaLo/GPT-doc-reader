@@ -9,7 +9,7 @@ const LoginButton = () => {
     try {
       await loginWithRedirect({
         appState: {
-          returnTo: "/",
+          returnTo: "/profile",
           action: "login"
         },
       });

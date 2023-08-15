@@ -95,6 +95,10 @@ CREATE TABLE files_access_junction (
 
 CREATE ROLE temp_access_user;
 
+GRANT INSERT, UPDATE, SELECT, DELETE
+ON ALL TABLES IN SCHEMA public 
+TO temp_access_user;
+
 ALTER TABLE files ENABLE ROW LEVEL SECURITY;
 
 ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;

@@ -35,51 +35,19 @@ index_name = "testing"
 search = Pinecone.from_existing_index(index_name, embeddings)
 
 
+def file_to_embedding(filepath):
+    reader = PdfReader(filepath)
 
-app = flask.Flask(__name__)
-app.config["DEBUG"] = True
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-
-
-@app.route('/', methods=['GET'])
-def home():
-    return '''<h1>home page</h1>
-'''
-
-@app.route('/generateqna', methods=['GET'])
-def returnQuery():
-    question = request.args["query"]
-    question = question.replace("_", " ")
-    similar_chunks = search.similarity_search(question)
-    #INSERT FUNCTION HERE
-    answer = chain.run({"input_documents": similar_chunks})
-    answer = answer.replace("\n", "")
-    answer = jsonify(answer)
-    #for cors
-    answer.headers.add("Access-Control-Allow-Origin", "*")
-    return answer
-
-#change this part idk how to accept pdf from flask
-@app.route('/uploadembeddings', methods=['GET'])
-def addEmbeddings():
     totaltext = ""
-    
-    #reads the pdf, takes text
-
-    reader = PdfReader("childhood_diseases.pdf")
     for page in reader.pages:
         totaltext = totaltext + " " + page.extract_text()
 
-    #start generating embedding
+    # start generating embedding
     text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size = 600,
-    chunk_overlap = 100,
+        chunk_size=600,
+        chunk_overlap=100,
     )
     res = text_splitter.create_documents([totaltext])
 
-    #put the embedding in pinecone
+    # put the embedding in pinecone
     Pinecone.from_documents(res, embeddings, index_name=index_name)
-    return
-
-
-serve(app, host='0.0.0.0', port=8000)
