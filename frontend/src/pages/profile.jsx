@@ -1,15 +1,11 @@
-import { useAuth0 } from "@auth0/auth0-react"
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { TokenContext } from "../components/layout";
 const Profile = () => {
-    const { isLoading, isAuthenticated, getAccessTokenSilently } = useAuth0()
     const [profileData, setProfileData] = useState(null)
-    const navigate = useNavigate();
+    const accessToken = useContext(TokenContext)
 
     useEffect(() => {
-
         const getProfileData = async ()=> {
-            const accessToken = await getAccessTokenSilently()
             console.log(accessToken)
             const fetchedProfileData = await (await fetch("http://127.0.0.1:5000/get-user-info",{
                 headers:{
@@ -20,20 +16,11 @@ const Profile = () => {
             setProfileData(fetchedProfileData)
         }
 
-        if(!isAuthenticated && !isLoading){
-            navigate("/")
-        }
-        else{
-            getProfileData()
-        }
-    }, [getAccessTokenSilently, isAuthenticated, isLoading, navigate])
+        getProfileData()
 
-    if (isLoading) {
-        return (
-            <div></div>
-        )
-    }
+    }, [accessToken])
 
+    console.log(profileData)
     return (
         <div>
             

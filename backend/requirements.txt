@@ -1,5 +1,5 @@
 python-dotenv==1.0.0
-langchain==0.0.242
+langchain==0.0.274
 flask==2.3.2
 Authlib==1.2.1
 SQLAlchemy==2.0.19
@@ -7,3 +7,8 @@ PyJWT==2.8.0
 Flask-Cors==4.0.0
 pgvector==0.2.0
 pypdf==3.13.0
+pinecone-client==2.2.2
+firebase-admin==6.2.0
+openai==0.27.8
+tiktoken==0.4.0
+psycopg2-binary==2.9.7

@@ -23,7 +23,7 @@ const router = createBrowserRouter(
     }>
         <Route index element={<Index />}/>
         <Route element={<Profile />} path="/profile"/>
-        <Route element={<BotConversations />} path="/bot-conversations"/>
+        <Route element={<BotConversations />} path="/my-chats"/>
         <Route element={<UserBotDisplay />} path="/my-bots"/>
         <Route element={<UserFileDisplay />} path="/my-files"/>
     </Route>

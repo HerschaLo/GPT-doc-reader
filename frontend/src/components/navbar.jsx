@@ -31,8 +31,11 @@ const NavBar = ()=>{
         </>
         :
         <>
-            <button className="bg-red-500" onClick={()=>{logout({ logoutParams: { returnTo: window.location.origin } })}}>Logout</button>
+            <button onClick={()=>{logout({ logoutParams: { returnTo: window.location.origin } })}}>Logout</button>
             <Link to="/profile">Profile</Link>
+            <Link to="/my-files">My Files</Link>
+            <Link to="/my-bots">My Bots</Link>
+            <Link to="/my-chats">My Chats</Link>
         </>
         }
         </div>
